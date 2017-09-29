@@ -35,7 +35,7 @@ Know that dependencies are cascaded (more below in Managing Dependencies), any o
 Do `bumpversion major/minor/patch`  to increment version. bumpversion uses Semver. Default command arguments defined in setup.cfg.
 
 ## Managing Dependencies
-Packages are abstracted by use-case under `requirements/*.in` files, they are also cascading `base.in < test.in < develop.in`.
+Using `pip-tools` packages are abstracted by use-case under `requirements/*.in` files, they are also cascading `base.in < test.in < develop.in`.
 
 > ###### `base.in`
 > will hold the minimum of dependencies, usually the only thing installed in production.
