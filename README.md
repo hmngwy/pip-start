@@ -1,6 +1,6 @@
 # `pip-start`
 
-is a template for OSS pip packages, I designed this to help build sparser packages for [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture.
+is a template for OSS pip packages, I designed this to help build sparser packages for [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture based systems.
 
 #### Summary of Tools
 
@@ -43,7 +43,7 @@ Packages are abstracted by use-case under requirements/*.in files, they are also
 
 `develop.in` will have everything necessary to contribute to this package.
 
-Once `make requirements` are run, `.txt` files should be versioned in the vcs because that's just how pip-tools rock, also because version pinning. 
+Once `make requirements` are run, `.txt` files should be versioned in the vcs because that's just how pip-tools rock, also because version pinning.
 
 `.in` files cascades `.txt` and not `.in` files because, for example, we want tests to use the same pinned versions as base.
 
@@ -69,9 +69,9 @@ make requirements
 Do `pytest` or `python setup.py test` in project root, also aliased as `test`. Test cases live in `./tests`.
 
 ### Continuous Integration
-A basic TravisCI config that runs `tox` is included. 
+A basic TravisCI config that runs `tox` is included.
 
-### Multi-environment Testing 
+### Multi-environment Testing
 By default tox is configured to test
 
 - Production installation of your package, aka `pip install .`
