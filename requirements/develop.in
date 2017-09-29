@@ -1,0 +1,9 @@
+-r test.txt
+
+bumpversion
+pylint
+autopep8
+pycodestyle
+pydocstyle
+pip-autoremove
+pip-tools
