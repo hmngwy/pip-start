@@ -15,16 +15,14 @@ from setuptools import find_packages
 REQMNTS = {'base': [], 'setup': [], 'test': []}
 SCRIPTS = []
 
-if os.path.isdir('requirements'):
-    for fin in os.listdir('requirements'):
-        if fin.endswith('.txt'):
-            with open(join('requirements', fin)) as f:
-                handle = splitext(basename(fin))[0]
-                REQMNTS[handle] = f.read().splitlines()
+for fin in os.listdir('requirements'):
+    if fin.endswith('.txt'):
+        with open(join('requirements', fin)) as f:
+            handle = splitext(basename(fin))[0]
+            REQMNTS[handle] = f.read().splitlines()
 
-if os.path.isdir('requirements'):
-    for fin in os.listdir('bin'):
-        SCRIPTS.append(join('bin', fin))
+for fin in os.listdir('bin'):
+    SCRIPTS.append(join('bin', fin))
 
 with open('README.md') as readme_file:
     README = readme_file.read()
