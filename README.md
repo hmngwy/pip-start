@@ -83,3 +83,14 @@ By default tox is configured to test
 
 ## Package Custom Scripts/Commands
 Automatically loaded by `setup.py` from `./bin`.
+
+
+
+##### Inspiration
+- [Better Package Management](http://nvie.com/posts/better-package-management/#virtue-2-have-your-envs-reflect-your-specs)
+- [A successful pip-tools workflow for managing Python package requirements](http://jamescooke.info/a-successful-pip-tools-workflow-for-managing-python-package-requirements.html)
+- [Open Sourcing a Python Project the Right Way](https://jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/)
+- [Cookiecutter PyPackage](https://github.com/audreyr/cookiecutter-pypackage)
+
+> Why isn't this a `cookiecutter` package?
+Because I plan on creating my own cli tool for this template.
