@@ -1,9 +1,10 @@
 -r test.txt
 
-bumpversion
-pylint
 autopep8
-pycodestyle
-pydocstyle
+bumpversion
 pip-autoremove
 pip-tools
+pylint
+pycodestyle
+pydocstyle
+tox
