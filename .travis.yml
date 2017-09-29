@@ -9,7 +9,7 @@ install:
   - pip install -U pip-tools
 
 before_script:
-  - (cd requirements; make rq_clean requirements)
+  - make rq_clean requirements
   - pip install -e '.[develop]'
 
 # command to run tests, e.g. python setup.py test
