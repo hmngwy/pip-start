@@ -10,7 +10,6 @@ install:
 
 before_script:
   - make rq_clean requirements
-  - pip install -e '.[develop]'
 
 # command to run tests, e.g. python setup.py test
 script:
