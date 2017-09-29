@@ -2,6 +2,8 @@
 
 is a template for OSS pip packages, I designed this to help build sparser packages for [Microservices](https://en.wikipedia.org/wiki/Microservices) architecture based systems.
 
+[![Build Status](https://travis-ci.org/hmngwy/pip-start.svg?branch=master)](https://travis-ci.org/hmngwy/pip-start)
+
 ## Summary of Tools
 
 #### Testing
