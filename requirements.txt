@@ -1,1 +1,6 @@
--r requirements/base.txt
+# Do not install with pip install -r requirements.txt
+#
+# Instead use one of the following:
+#   pip install .
+#   pip setup.py test
+#   pip install -e '.[develop]'
