@@ -13,4 +13,4 @@ test:
     - v=$(python3 --version 2>& 1); if [ "$v" == "Python 3.5.1" ]; then echo "$v OK"; else ! echo "$v ERR"; fi
 
   override:
-    - python3 -c 'print("OK")'
+    - tox
