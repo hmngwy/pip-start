@@ -58,7 +58,7 @@ make rq_clean requirements
 #### Adding a dependency
 ```bash
 cat >> requirements/base.in
-numpy
+numpy [ctrl-d]
 make requirements
 ```
 
