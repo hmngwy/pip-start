@@ -72,9 +72,10 @@ make requirements
 Do `pytest` or `python setup.py test` in project root, also aliased as `test`. Test cases live in `./tests`.
 
 ## Continuous Integration
-A basic TravisCI config that runs `tox` is included.
+A basic TravisCI and CircleCI config that runs `tox` is included.
 
-CircleCI will automatically run with just `tox.ini`.
+CircleCI needs `pyenv global x.x.x` because they just had to use pyenv.
+
 
 ## Multi-environment Testing
 By default tox is configured to test
