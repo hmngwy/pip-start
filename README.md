@@ -30,6 +30,8 @@ Know that dependencies are cascaded (more below in Managing Dependencies), any o
 #### Testing the package
 `python setup.py test`
 
+`pytest` will only work if you at the least run `pip install -r requirements/test.txt`, the above command automates this step if necesarry.
+
 #### Develop the package
 `pip install -e '.[develop]'`
 
@@ -70,6 +72,9 @@ make requirements
 
 ## Unit Testing
 Do `pytest` or `python setup.py test` in project root, also aliased as `test`. Test cases live in `./tests`.
+
+## Multi-environment Testing
+Do `tox` in project root. This means your CI should only need `pip install tox` as a minimum to test this whole package.
 
 ## Continuous Integration
 A basic TravisCI and CircleCI config that runs `tox` is included.
