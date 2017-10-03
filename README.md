@@ -74,6 +74,8 @@ Do `pytest` or `python setup.py test` in project root, also aliased as `test`. T
 ## Continuous Integration
 A basic TravisCI config that runs `tox` is included.
 
+CircleCI will automatically run with just `tox.ini`.
+
 ## Multi-environment Testing
 By default tox is configured to test
 
