@@ -28,7 +28,7 @@ Know that dependencies are cascaded (more below in Managing Dependencies), any o
 `pip install .` and __not__ `python setup.py install`, the latter can't use wheels.
 
 #### Testing the package
-`python setup.py test`
+`pip install -e .[test] && pytest`
 
 `pytest` will only work if you at the least run `pip install -r requirements/test.txt`, the above command automates this step if necesarry.
 
