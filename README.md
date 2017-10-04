@@ -48,6 +48,11 @@ Using `pip-tools` packages are abstracted by use-case under `requirements/*.in` 
 > ###### `develop.in`
 > will have everything necessary to contribute to this package.
 
+Additionally we have `deploy.in`, that depends on `test.txt`. Good for publishing packages to custom pypi (and or private) servers.
+
+> ###### `deploy.in`
+> will have everything necessary to deploy this package to a pypi server.
+
 Once `make requirements` are run, `.txt` files should be versioned in the vcs because that's just how pip-tools rock, also because version pinning.
 
 `.in` files cascades `.txt` and not `.in` files because, for example, we want tests to use the same pinned versions as base.
