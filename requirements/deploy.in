@@ -1,3 +1,4 @@
 -r test.txt
 
 s3pypi
+twine
