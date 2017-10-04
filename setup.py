@@ -40,6 +40,5 @@ setup(
     test_suite='tests',
     install_requires=REQMNTS['base'],
     setup_requires=REQMNTS['setup'],
-    tests_require=REQMNTS['test'],
     extras_require=REQMNTS
 )
