@@ -13,3 +13,9 @@ test:
 
   override:
     - tox
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - tox -e deploy

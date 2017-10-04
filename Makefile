@@ -13,6 +13,7 @@ requirements/%.txt: requirements/%.in
 # Cascading dependencies
 requirements/test.txt: requirements/base.txt
 requirements/develop.txt: requirements/test.txt
+requirements/deploy.txt: requirements/test.txt
 
 rq_check:
 	@which pip-compile > /dev/null
