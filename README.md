@@ -94,6 +94,16 @@ By default tox is configured to test
 - Non-develop `tests`, aka `python setup.py test`
 - Develop install, aka `pip install -e '.[develop]'`
 
+## Building and Publishing/Deployment
+
+If you have deployment dependencies, they're best placed in `requirements/deploy.in`. Then in your deployment flow, install the package via `pip install '.[deploy]'`.
+
+Building is still done through setup tools, make sure you have `wheels` in your venv.
+
+`python setup.py sdist --formats gztar bdist_wheel`
+
+If you're uploading to PyPa, the currently official way of uploading to PyPa is using twine, the command `twine upload dist/*` is supported and twine is already in `deploy.in`.
+
 ## Package Custom Scripts/Commands
 Automatically loaded by `setup.py` from `./bin`.
 
