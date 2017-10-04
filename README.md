@@ -76,7 +76,9 @@ make requirements
 ```
 
 ## Unit Testing
-Do `pytest` or `python setup.py test` in project root, also aliased as `test`. Test cases live in `./tests`.
+Do `pytest` and __never__ ~~`python setup.py test`~~ in project root. Because of bdist_wheel, we can't use tests_require kwarg in setup() that is require by `setup.py test`.
+
+Test cases live in `./tests`.
 
 ## Multi-environment Testing
 Do `tox` in project root. This means your CI should only need `pip install tox` as a minimum to test this whole package.
