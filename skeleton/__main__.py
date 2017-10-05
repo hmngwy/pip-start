@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-
 """Top-level package for skeleton."""
 
-from skeleton import __version__
+import requests
 
-print('Version', __version__)
+WAN = requests.get('http://ipinfo.io/ip')
+print(WAN.text)

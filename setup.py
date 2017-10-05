@@ -3,42 +3,94 @@
 
 """Package configuration."""
 
-import os
+import sys
 
-from os.path import basename
-from os.path import splitext
+import os
 from os.path import join
 
 from setuptools import setup
-from setuptools import find_packages
+from setuptools.command.test import test as TestCommand
 
-REQMNTS = {'base': [], 'setup': [], 'test': []}
+# To build this project you must be in an env that has pipenv
+from pipenv.project import Project
+from pipenv.utils import convert_deps_to_pip
+
+PFILE = Project(chdir=False).parsed_pipfile
+REQUIRES = convert_deps_to_pip(PFILE['packages'], r=False)
+TEST_REQUIRES = convert_deps_to_pip(PFILE['dev-packages'], r=False)
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+PKG_DIR = 'skeleton'
+
+# Packages in the distribution build
+PACKAGES = [PKG_DIR]
+
+
+class PyTest(TestCommand):
+    """setup.py test override class."""
+
+    user_options = [('pytest-args=', 'a', "Arguments to pass into py.test")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        try:
+            from multiprocessing import cpu_count
+            self.pytest_args = ['-n', str(cpu_count()), '--boxed']
+        except (ImportError, NotImplementedError):
+            self.pytest_args = ['-n', '1', '--boxed']
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
+
+
+# 'setup.py publish' shortcut.
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist bdist_wheel')
+    os.system('twine upload dist/*')
+    sys.exit()
+
+# Autoload bin/* into packages scripts
 SCRIPTS = []
-
-for fin in os.listdir('requirements'):
-    if fin.endswith('.txt'):
-        with open(join('requirements', fin)) as f:
-            handle = splitext(basename(fin))[0]
-            REQMNTS[handle] = f.read().splitlines()
-
 for fin in os.listdir('bin'):
     SCRIPTS.append(join('bin', fin))
 
-with open('README.md') as readme_file:
-    README = readme_file.read()
+ABOUT = {}
+with open(os.path.join(HERE, PKG_DIR, "__version__.py")) as f:
+    exec(f.read(), ABOUT)  # pylint: disable=W0122
+
+with open('README.md', 'r') as f:
+    README = f.read()
+with open('HISTORY.md', 'r') as f:
+    HISTORY = f.read()
+
 
 setup(
-    name='skeleton',
-    version='0.0.0',
-    description='A short description.',
-    long_description=README,
-    author='John Doe',
-    author_email='john@doe.com',
-    url='https://github.com/johndoe/skeleton',
-    packages=find_packages(include=['skeleton']),
-    scripts=SCRIPTS,
-    test_suite='tests',
-    install_requires=REQMNTS['base'],
-    setup_requires=REQMNTS['setup'],
-    extras_require=REQMNTS
+    name=ABOUT['__title__'],
+    version=ABOUT['__version__'],
+    description=ABOUT['__description__'],
+    long_description=README + '\n\n' + HISTORY,
+    author=ABOUT['__author__'],
+    author_email=ABOUT['__author_email__'],
+    url=ABOUT['__url__'],
+    install_requires=REQUIRES,
+    packages=PACKAGES,
+    package_data={'': ['LICENSE', 'NOTICE'], PKG_DIR: ['*.pem']},
+    package_dir={ABOUT['__title__']: PKG_DIR},
+    include_package_data=True,
+    license=ABOUT['__license__'],
+    zip_safe=False,
+    classifiers=(
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Programming Language :: Python'
+    ),
+    cmdclass={'test': PyTest},
+    tests_require=TEST_REQUIRES
 )

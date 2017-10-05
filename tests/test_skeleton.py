@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """Tests for skeleton."""
-import skeleton
+from skeleton import __version__
 
 
 def test_version():
     """Test if version set."""
-    assert skeleton.__version__ == '0.0.0'
+    assert __version__.__version__ == '0.0.0'
