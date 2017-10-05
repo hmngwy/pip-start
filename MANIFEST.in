@@ -1,2 +1,3 @@
 include README.md LICENSE NOTICE HISTORY.md pytest.ini Pipfile
 recursive-include tests *.py
+recursive-include bin *
