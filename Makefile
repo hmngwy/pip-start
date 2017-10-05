@@ -2,14 +2,12 @@
 init:
 	pip install pipenv --upgrade
 	pipenv install --dev --skip-lock
+
 test:
-	tox -e test
+	pipenv run pytest skeleton tests
 
 pylint:
 	pipenv run pylint skeleton
-
-coverage:
-	pipenv run py.test --cov-config .coveragerc --verbose --cov-report term --cov-report xml --cov=requests skeleton tests
 
 clean:
 	rm -fr dist .egg requests.egg-info build
