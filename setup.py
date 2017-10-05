@@ -50,12 +50,6 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 
-# 'setup.py publish' shortcut.
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist bdist_wheel')
-    os.system('twine upload dist/*')
-    sys.exit()
-
 # Autoload bin/* into packages scripts
 SCRIPTS = []
 for fin in os.listdir('bin'):
@@ -86,11 +80,13 @@ setup(
     include_package_data=True,
     license=ABOUT['__license__'],
     zip_safe=False,
+    scripts=SCRIPTS,
     classifiers=(
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Programming Language :: Python'
     ),
     cmdclass={'test': PyTest},
+    test_suite='tests',
     tests_require=TEST_REQUIRES
 )

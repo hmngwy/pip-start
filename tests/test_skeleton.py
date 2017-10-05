@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """Tests for skeleton."""
+
 from skeleton import __version__
 
 
